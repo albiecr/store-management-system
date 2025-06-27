@@ -38,5 +38,15 @@ public class Validation {
         return cpf.charAt(9) - '0' == firstCheckDigit &&
                cpf.charAt(10) - '0' == secondCheckDigit;
     }
+
+    public static boolean validatePhone(String phone) {
+
+        if (phone == null) return false;
+
+       phone = phone.replaceAll("[^\\d]", "");
+
+        // Accepts 10 or 11 digits (with or without area code)
+        return phone.matches("\\d{10,11}");
+    }
 }
 
