@@ -48,5 +48,16 @@ public class Validation {
         // Accepts 10 or 11 digits (with or without area code)
         return phone.matches("\\d{10,11}");
     }
+
+    public static boolean validatePostalCode(String cep) {
+
+        if (cep == null) return false;
+
+        cep = cep.replaceAll("[^\\d]", "");
+
+        //Must be exactly 8 digits
+        return cep.matches("\\d{8}");
+
+    }
 }
 
