@@ -53,4 +53,11 @@ public class Person {
         this.phone = phone;
         this.adress = adress;
     }
+
+    public void displayData(){
+        System.out.println("Name: " + name);
+        System.out.println("CPF: " + cpf);
+        System.out.println("Phone: " + phone);
+        System.out.println("Adress: " + adress);
+    }
 }
