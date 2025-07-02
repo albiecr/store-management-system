@@ -19,4 +19,9 @@ public class Customer extends Person {
         this.customerCode = customerCode;
     }
     
+    @Override
+    public void displayData(){
+        super.displayData();
+        System.out.println("Customer Code: " + customerCode);
+    }
 }
