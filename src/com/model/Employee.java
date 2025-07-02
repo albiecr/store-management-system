@@ -11,6 +11,12 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+    @Override
+    public void displayData(){
+        super.displayData();
+        System.out.println("Position" + position);
+        System.out.println("Salary" + salary);
+    }
 
 
 }
