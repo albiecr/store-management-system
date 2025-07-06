@@ -47,4 +47,18 @@ public class CustomerDao {
         }
         return customers;
     }
+
+    public void update(Customer customer) throws SQLException {
+        String sql = "UPDATE customer SET name = ?, phone = ?, address = ?, WHERE cpf = ?";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+                stmt.setString(1, customer.getName());
+                stmt.setString(2, customer.getPhone());
+                stmt.setString(3, customer.getAdress().toString());
+                stmt.setString(4, customer.getCpf());
+                stmt.executeUpdate();
+        }
+    }
 }
