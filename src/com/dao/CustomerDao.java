@@ -6,6 +6,9 @@ import com.connection.ConnectionFactory;
 import com.model.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDao {
     public void insert(Customer customer) throws SQLException {
@@ -21,5 +24,27 @@ public class CustomerDao {
             stmt.setString(5, customer.getRg());
             stmt.executeUpdate();
         }
+    }
+
+    public List<Customer> selectAll() throws SQLException {
+        List<Customer> customers = new ArrayList<>();
+        String sql = "SELECT * FROM customer";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+                    Custommer customer = new Customer(
+                        rs.getString("name"),
+                        rs.getString("cpf"),
+                        rs.getString("phone"),
+                        null,
+                        rs.getString("rg")
+                    );
+                    customers.add(customer);
+                }
+        }
+        return customers;
     }
 }
