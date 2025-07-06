@@ -61,4 +61,15 @@ public class CustomerDao {
                 stmt.executeUpdate();
         }
     }
+
+    public void delete(Customer customer) throws SQLException {
+        String sql = "DELETE FROM customer WHERE cpf = ?";
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setString(1, customer.getCpf());
+                stmt.execute();
+            }
+    }
 }
