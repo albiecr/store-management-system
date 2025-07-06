@@ -1,4 +1,4 @@
-package com.model
+package com.model;
 
 public class Employee extends Person {
 
